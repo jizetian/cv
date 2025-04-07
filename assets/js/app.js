@@ -64,8 +64,23 @@ const initGestureRecognition = () => {
 
   document.getElementById('startButton').addEventListener('click', async () => {
     try {
+      // 先请求设备权限
+      const permission = await navigator.permissions.query({ name: 'camera' });
+      
+      if (permission.state === 'denied') {
+        alert('请前往浏览器设置允许摄像头访问权限');
+        return;
+      }
+
+      // 添加详细的设备检测
+      const devices = await navigator.mediaDevices.enumerateDevices();
+      if (!devices.some(device => device.kind === 'videoinput')) {
+        alert('未检测到可用摄像头设备');
+        return;
+      }
+
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: { 
+        video: {
           width: { ideal: 1280 },
           height: { ideal: 720 },
           facingMode: "user"
@@ -90,7 +105,14 @@ const initGestureRecognition = () => {
 
     } catch (error) {
       console.error('摄像头初始化失败:', error);
-      alert(`无法访问摄像头: ${error.message}`);
+      // 细化错误提示
+      const errorMap = {
+        'NotAllowedError': '请允许摄像头访问权限',
+        'NotFoundError': '未找到视频输入设备',
+        'NotReadableError': '摄像头被其他程序占用',
+        'OverconstrainedError': '无法满足分辨率要求'
+      };
+      alert(`摄像头访问失败: ${errorMap[error.name] || error.message}`);
     }
   });
 };
