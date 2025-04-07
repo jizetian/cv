@@ -1,0 +1,51 @@
+/* 主样式表 */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.video-feed {
+    width: 100%;
+    max-width: 720px;
+    margin: 2rem 0;
+    border-radius: 1rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.1);
+}
+
+.start-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.start-btn:hover {
+    background: #1976D2;
+}
+
+.alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.alert-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    font-size: 1.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.2);
+}

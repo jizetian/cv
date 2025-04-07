@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手势识别系统</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>手势交互系统</h1>
+        <video class="video-feed" id="input_video"></video>
+        <canvas class="output-canvas" id="output_canvas"></canvas>
+        <button class="start-btn" id="startButton">启动摄像头</button>
+        <div class="alert-overlay" id="alertOverlay">
+            <div class="alert-box">👋 手势已识别!</div>
+        </div>
+    </div>
+    <script type="module" src="./assets/js/app.js"></script>
+</body>
+</html>
